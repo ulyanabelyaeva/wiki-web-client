@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import '../style/Tree.css';
 import PageView from "./PageView";
-import { fetchCreationDirectory, fetchCreationPage, fetchTree } from "../redux/slice/TreeSlice";
+import { fetchCreationDirectory, fetchCreationPage, fetchUpdatingDirectory, fetchTree } from "../redux/slice/TreeSlice";
 
 const DirectoryNode = ({ directory }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,12 +31,42 @@ const DirectoryNode = ({ directory }) => {
     dispatch(fetchTree())
   };
 
+  const updateDirectoryName = () => {
+    let view = document.getElementById(directory.id);
+    let area = document.createElement('input');
+    area.className = 'edit-name';
+    area.value = view.innerHTML;
+
+    area.onkeydown = function (event) {
+      if (event.key == 'Enter') {
+        this.blur();
+      }
+    };
+
+    area.onblur = async () => {
+      let newName = area.value;
+      view.innerHTML = newName;
+      area.replaceWith(view);
+
+      let now = new Date();
+      let request = {
+        id: directory.id,
+        name: newName,
+        updatedAt: now.toISOString()
+      };
+      await dispatch(fetchUpdatingDirectory(request));
+      dispatch(fetchTree())
+    };
+    view.replaceWith(area);
+    area.focus();
+  }
+
   return (
     <div className="node">
       <div className="node-content">
         <div>
           <button onClick={toggleNode} className="toggle-icon" />
-          <span>{directory.name}</span>
+          <span onDoubleClick={updateDirectoryName} id={directory.id}>{directory.name}</span>
         </div>
         <div className="dropdown">
           <button className="node-plus-button">+</button>

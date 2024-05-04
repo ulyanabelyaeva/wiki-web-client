@@ -77,9 +77,18 @@
   padding: 10px 0px;
 }
 
-.page-btn{
+.page-btn {
   border: none;
   cursor: pointer;
   padding: 0px;
+  font-size: 15px;
+}
+
+.edit-name {
+  padding: 5px 5px;
+  margin: 0;
+  outline: none;
+  border: none;
+  border-radius: 10px;
   font-size: 15px;
 }
