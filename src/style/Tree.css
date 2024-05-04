@@ -1,0 +1,44 @@
+body {
+  font-size: 24px;
+  margin: 10px;
+}
+
+.tree-view {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.node {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.toggle-icon {
+  cursor: pointer;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  background-image: url('../../public/folder.svg');
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+  border: 0px;
+}
+
+.page-icon {
+  cursor: pointer;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  background-image: url('../../public/file.svg');
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+  border: 0px;
+}
+
+input {
+  padding: 10px;
+  font-size: 24px;
+}
