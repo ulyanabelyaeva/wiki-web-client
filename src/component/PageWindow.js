@@ -8,7 +8,7 @@ function PageWindowComponent() {
     const getFormattedDate = (isoDate) => {
         let date = new Date(isoDate);
         let months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
-        let formattedDate = date.getDay() + " " + months[date.getMonth()] + " " + date.getFullYear() + ", " + date.getHours() + ":" + date.getMinutes();
+        let formattedDate = date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear() + ", " + date.getHours() + ":" + date.getMinutes();
         return formattedDate;
     }
 
