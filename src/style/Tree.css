@@ -1,12 +1,7 @@
 .tree-container {
   background-color: #EEEEEE;
   width: 25%;
-}
-
-.tree-view {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  height: 100%;
 }
 
 .node {
@@ -17,6 +12,7 @@
 .node-content {
   display: flex;
   justify-content: space-between;
+  font-size: 15px;
 }
 
 .toggle-icon {
@@ -78,10 +74,12 @@
 .dropdown-container {
   display: flex;
   justify-content: end;
+  padding: 10px 0px;
 }
 
-
-input {
-  padding: 10px;
-  font-size: 24px;
+.page-btn{
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  font-size: 15px;
 }

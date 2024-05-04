@@ -12,14 +12,14 @@ const PageNode = ({ page }) => {
   return (
     <div className="node">
       <button className="page-icon" />
-      <button onClick={updatePageState} className='page-window-button'>{page.name}</button>
+      <button onClick={updatePageState} className='page-btn'>{page.name}</button>
     </div>
   );
 };
 
 const PageView = ({ pages }) => {
   return (
-    <div className="tree-view">
+    <div>
       {pages && pages.map((page) => (
         <PageNode key={page.id} page={page} />
       ))}

@@ -1,3 +1,38 @@
 .page-window{
     width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.page-window-container{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.page-window-title{
+    text-align: center;
+    font-size: 30px;
+}
+
+.page-window-subtitle{
+    font-size: 15px;
+    color: #797979;
+}
+.page-window-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.page-window-btn{
+    border-radius: 10px;
+    padding: 15px 15px;
+    border: none;
+}
+
+.page-window-footer{
+    text-align: end;
 }

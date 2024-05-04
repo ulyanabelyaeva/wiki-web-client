@@ -1,4 +1,4 @@
-import './App.css';
+import './style/App.css';
 import Tree from "./component/Tree";
 import PageWindow from './component/PageWindow';
 
