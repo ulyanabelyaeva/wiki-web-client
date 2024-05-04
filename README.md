@@ -11,9 +11,13 @@ To install libraries, use the command `npm install --save <library-name>`
 
 - react-draft-wysiwyg 
 - draft-js
+- axios
+- @reduxjs/toolkit
+- redux react-redux
 
 
 
 ## Горячие клавиши VSCode
 
 - Shift+Alt+F - выравнивание кода 
+- Ctrl+` - открытие терминала
