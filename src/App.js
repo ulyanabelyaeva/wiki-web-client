@@ -1,10 +1,14 @@
 import './App.css';
-import Markdown from './component/Markdown';
-import Tree from './component/Tree';
+import Tree from "./component/Tree";
+import PageWindow from './component/PageWindow';
+
 
 function App() {
   return (
-    <Tree/>
+    <div className='workspace'>
+      <Tree />
+      <PageWindow/>
+    </div>
   );
 }
 

@@ -1,10 +1,18 @@
+import { useDispatch } from 'react-redux';
+import { updatePage } from '../redux/slice/PageWindowSlice'
+
 import '../style/Tree.css';
 
 const PageNode = ({ page }) => {
+  const dispatch = useDispatch();
+  const updatePageState = () => {
+    dispatch(updatePage(page));
+  }
+
   return (
     <div className="node">
       <button className="page-icon" />
-      <span>{page.name}</span>
+      <button onClick={updatePageState} className='page-window-button'>{page.name}</button>
     </div>
   );
 };
