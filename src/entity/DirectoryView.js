@@ -9,21 +9,23 @@ const DirectoryNode = ({ directory }) => {
   const toggleNode = () => setIsOpen(!isOpen);
   const dispatch = useDispatch();
 
-  const createNewDirectory = async() => {
+  const createNewDirectory = async () => {
+    let now = new Date();
     let request = {
       parentDirectoryId: directory.id,
       name: 'Новый раздел',
-      createdAt: '2024-04-05T14:29:00+03:00'
+      createdAt: now.toISOString()
     };
     await dispatch(fetchCreationDirectory(request));
     dispatch(fetchTree())
   };
 
-  const createNewPage = async() => {
+  const createNewPage = async () => {
+    let now = new Date();
     let request = {
       directoryId: directory.id,
       name: 'Новая страница',
-      createdAt: '2024-04-05T14:29:00+03:00'
+      createdAt: now.toISOString()
     };
     await dispatch(fetchCreationPage(request));
     dispatch(fetchTree())
@@ -37,11 +39,11 @@ const DirectoryNode = ({ directory }) => {
           <span>{directory.name}</span>
         </div>
         <div className="dropdown">
-        <button className="node-plus-button">+</button>
-            <div className="dropdown-content">
-              <button onClick={createNewPage} className="dropdown-item-button">Добавить страницу</button>
-              <button onClick={createNewDirectory} className="dropdown-item-button">Добавить раздел</button>
-            </div>
+          <button className="node-plus-button">+</button>
+          <div className="dropdown-content">
+            <button onClick={createNewPage} className="dropdown-item-button">Добавить страницу</button>
+            <button onClick={createNewDirectory} className="dropdown-item-button">Добавить раздел</button>
+          </div>
         </div>
       </div>
       {isOpen && <DirectoryView directories={directory?.childDirectories} />}

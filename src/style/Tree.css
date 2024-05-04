@@ -43,23 +43,27 @@
   border: 0px;
 }
 
-.node-plus-button{
+.node-plus-button {
   border: none;
 }
-.dropdown{
+
+.dropdown {
   margin: 0 10px;
 }
+
 /* Выпадающий контент (по умолчанию скрыт) */
 .dropdown-content {
   display: none;
   position: absolute;
   z-index: 1;
 }
+
 /* Показываем выпадающий блок при наведении */
 .dropdown:hover .dropdown-content {
   display: flex;
   flex-direction: column;
 }
+
 .dropdown-item-button {
   border: 0px;
   background-color: #D8D4D4;
@@ -67,8 +71,13 @@
   padding: 10px 10px;
 }
 
-.dropdown-item-button:hover{
+.dropdown-item-button:hover {
   background-color: #EEEEEE;
+}
+
+.dropdown-container {
+  display: flex;
+  justify-content: end;
 }
 
 
