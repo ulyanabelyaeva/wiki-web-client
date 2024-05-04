@@ -1,21 +1,21 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import DirectoryView from "../entity/TreeView";
+import DirectoryView from "../entity/DirectoryView";
 import PageView from "../entity/PageView";
 import { fetchTree } from "../redux/slice/TreeSlice";
+import '../style/Tree.css';
 
 function TreeComponent() {
     const dispatch = useDispatch();
-    const data = useSelector(state => state.treeReducer.tree);
-    console.log("STATE", data)
+    const tree = useSelector(state => state.treeReducer.tree);
     useEffect(() => {
         dispatch(fetchTree())
     }, []);
 
 
-    return <div>
-        <DirectoryView directories={data?.directories} />
-        <PageView pages={data?.pages} />
+    return <div className="tree-container">
+        <DirectoryView directories={tree?.directories} />
+        <PageView pages={tree?.pages} />
     </div>;
 }
 

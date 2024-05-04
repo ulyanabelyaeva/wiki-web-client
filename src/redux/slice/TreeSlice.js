@@ -11,6 +11,14 @@ export const fetchTree = createAsyncThunk('fetchTree', async () => {
   return data;
 });
 
+export const fetchCreationDirectory = createAsyncThunk('fetchCreationDirectory', async (params) => {
+  await instanse.post('/directory/create', params);
+});
+
+export const fetchCreationPage = createAsyncThunk('fetchCreationPage', async (params) => {
+  await instanse.post('/page/create', params);
+});
+
 const TreeSlice = createSlice({
   name: "tree",
   initialState,
