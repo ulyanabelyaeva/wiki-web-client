@@ -5,6 +5,7 @@ import instanse from "../../axios";
 const initialState = {
   page: null,
   content: null,
+  updatedContent: null,
   editMode: false
 }
 
@@ -23,6 +24,9 @@ const pageWindowSlice = createSlice({
     },
     switchEditMode(state, action) {
       state.editMode = action.payload
+    },
+    updateContent(state, action){
+      state.updatedContent = action.payload
     }
   },
   extraReducers: builder => {
@@ -37,4 +41,4 @@ const pageWindowSlice = createSlice({
 
 export const pageWindowReducer = pageWindowSlice.reducer;
 
-export const { updatePage, switchEditMode } = pageWindowSlice.actions;
+export const { updatePage, switchEditMode, updateContent } = pageWindowSlice.actions;

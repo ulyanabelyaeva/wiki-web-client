@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Editor } from "react-draft-wysiwyg";
+import { EditorState, ContentState, convertToRaw } from "draft-js";
+import htmlToDraft from "html-to-draftjs";
+import draftToHtml from "draftjs-to-html";
+import { updateContent } from "../redux/slice/PageWindowSlice";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import '../style/Markdown.css';
-import { EditorState } from "draft-js";
-import htmlToDraft from "html-to-draftjs";
-import { ContentState } from "draft-js";
 
 function Markdown() {
+    const dispatch = useDispatch();
     const [editorState, setEditorState] = useState(
         () => EditorState.createEmpty(),
     );
@@ -20,8 +21,12 @@ function Markdown() {
             const contentState = ContentState.createFromBlockArray(draftContent.contentBlocks);
             setEditorState(EditorState.createWithContent(contentState));
         }
-    }, [])
+    }, [content])
 
+    useEffect(() => {
+        const html = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+        dispatch(updateContent(html));
+    }, [editorState])
 
     return (
         <div className="markdown">

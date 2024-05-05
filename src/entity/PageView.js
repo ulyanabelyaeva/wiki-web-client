@@ -1,10 +1,12 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updatePage, fetchPageContent } from '../redux/slice/PageWindowSlice'
 import { fetchUpdatingPage, fetchTree } from '../redux/slice/TreeSlice';
 
 import '../style/Tree.css';
 
 const PageNode = ({ page }) => {
+  const content = useSelector(state => state.pageWindowReducer.content);
+
   const dispatch = useDispatch();
   const updatePageState = () => {
     dispatch(updatePage(page));
@@ -32,6 +34,7 @@ const PageNode = ({ page }) => {
       let request = {
         id: page.id,
         name: newName,
+        content: content,
         updatedAt: now.toISOString()
       };
       await dispatch(fetchUpdatingPage(request));

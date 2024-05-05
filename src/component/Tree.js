@@ -2,9 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DirectoryView from "../entity/DirectoryView";
 import PageView from "../entity/PageView";
-import { fetchTree } from "../redux/slice/TreeSlice";
+import { fetchCreationDirectory, fetchCreationPage, fetchTree } from "../redux/slice/TreeSlice";
 import '../style/Tree.css';
-import { fetchCreationDirectory, fetchCreationPage } from "../redux/slice/TreeSlice";
 
 function TreeComponent() {
     const dispatch = useDispatch();
