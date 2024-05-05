@@ -15,6 +15,7 @@ function Markdown() {
     );
 
     const content = useSelector(state => state.pageWindowReducer.content);
+    const editMode = useSelector(state => state.pageWindowReducer.editMode);
     useEffect(() => {
         if (content !== null) {
             const draftContent = htmlToDraft(content);
@@ -27,6 +28,16 @@ function Markdown() {
         const html = draftToHtml(convertToRaw(editorState.getCurrentContent()));
         dispatch(updateContent(html));
     }, [editorState])
+
+    useEffect(() => {
+        const toolbar = document.getElementsByClassName('toolbar');
+        if (!editMode && toolbar[0].classList.contains('dispay-none') === false) {
+            toolbar[0].classList.add('dispay-none');
+        }
+        if (editMode &&toolbar[0].classList.contains('dispay-none') === true) {
+            toolbar[0].classList.remove('dispay-none')
+        }
+    }, [editMode])
 
     return (
         <div className="markdown">
@@ -43,9 +54,12 @@ function Markdown() {
                         options: [8, 9, 10, 11, 12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 96],
                     },
                 }}
+                toolbarClassName="toolbar"
+                wrapperClassName="wrapper"
                 editorClassName="editor"
                 editorState={editorState}
                 onEditorStateChange={setEditorState}
+                readOnly={!editMode}
             />
         </div>
     );
