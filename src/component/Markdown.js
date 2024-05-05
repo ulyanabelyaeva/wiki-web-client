@@ -1,13 +1,28 @@
 import React, { useState } from "react";
-import { EditorState } from 'draft-js';
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import '../style/Markdown.css';
+import { EditorState } from "draft-js";
+import htmlToDraft from "html-to-draftjs";
+import { ContentState } from "draft-js";
 
 function Markdown() {
     const [editorState, setEditorState] = useState(
         () => EditorState.createEmpty(),
     );
+
+    const content = useSelector(state => state.pageWindowReducer.content);
+    useEffect(() => {
+        if (content !== null) {
+            const draftContent = htmlToDraft(content);
+            const contentState = ContentState.createFromBlockArray(draftContent.contentBlocks);
+            setEditorState(EditorState.createWithContent(contentState));
+        }
+    }, [])
+
+
     return (
         <div className="markdown">
             <Editor
@@ -21,10 +36,8 @@ function Markdown() {
                     },
                     fontSize: {
                         options: [8, 9, 10, 11, 12, 14, 16, 18, 24, 30, 36, 48, 60, 72, 96],
-
                     },
                 }}
-                wrapperClassName="editorWrapper"
                 editorClassName="editor"
                 editorState={editorState}
                 onEditorStateChange={setEditorState}

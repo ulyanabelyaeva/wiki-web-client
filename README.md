@@ -11,6 +11,8 @@ To install libraries, use the command `npm install --save <library-name>`
 
 - react-draft-wysiwyg 
 - draft-js
+- draftjs-to-html
+- html-to-draftjs
 - axios
 - @reduxjs/toolkit
 - redux react-redux
