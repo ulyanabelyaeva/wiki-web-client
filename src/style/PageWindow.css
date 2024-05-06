@@ -1,4 +1,4 @@
-.page-window{
+.page-window {
     width: 75%;
     height: 100%;
     display: flex;
@@ -6,7 +6,7 @@
     flex: 1 1 auto;
 }
 
-.page-window-container{
+.page-window-container {
     height: 100%;
     margin: 20px;
     display: flex;
@@ -14,26 +14,59 @@
     flex: 1 1 auto;
 }
 
-.page-window-title{
+.page-window-title {
     text-align: center;
     font-size: 30px;
 }
 
-.page-window-subtitle{
-    font-size: 15px;
-    color: #797979;
-}
-.page-window-header{
+.page-window-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.page-window-btn{
+
+.page-window-subtitle {
+    font-size: 15px;
+    color: #797979;
+}
+
+.page-window-header-right {
+    display: flex;
+    align-items: center;
+}
+
+.page-window-btn {
     border-radius: 10px;
     padding: 15px 15px;
     border: none;
 }
+.page-window-btn:hover {
+    background: linear-gradient(#ececeb, #eaeaea);
+    box-shadow:
+     inset rgba(0,0,0,.5) 0 -1px 1px,
+     inset rgba(0,0,0,.2) 0 1px,
+     rgba(0,0,0,.2) 0 1px 1px;
+  }
+.page-window-btn:active {
+    background: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.1));
+    box-shadow:
+     inset rgba(0,0,0,.8) 0 1px 2px,
+     inset rgba(0,0,0,.05) 0 -1px 0,
+     #fff 0 1px 1px;
+  }
 
-.page-window-footer{
+.page-window-print-btn {
+    cursor: pointer;
+    margin-right: 20px;
+    width: 30px;
+    height: 30px;
+    background-image: url('../../public/print.svg');
+    background-color: transparent;
+    background-size: cover;
+    background-position: center;
+    border: 0px;
+}
+
+.page-window-footer {
     text-align: end;
 }

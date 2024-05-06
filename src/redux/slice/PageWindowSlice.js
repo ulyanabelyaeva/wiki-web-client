@@ -15,6 +15,12 @@ export const fetchPageContent = createAsyncThunk('fetchPageContent', async (uuid
   return data;
 });
 
+export const fetchPage = createAsyncThunk('fetchPage', async (id) => {
+  let path = '/page/read/' + id;
+  const { data } = await instanse.get(path);
+  return data;
+});
+
 const pageWindowSlice = createSlice({
   name: 'pageWindow',
   initialState,
@@ -25,7 +31,7 @@ const pageWindowSlice = createSlice({
     switchEditMode(state, action) {
       state.editMode = action.payload
     },
-    updateContent(state, action){
+    updateContent(state, action) {
       state.updatedContent = action.payload
     }
   },
@@ -35,6 +41,9 @@ const pageWindowSlice = createSlice({
     });
     builder.addCase(fetchPageContent.rejected, (state) => {
       state.content = null;
+    });
+    builder.addCase(fetchPage.fulfilled, (state, action) => {
+      state.page = action.payload;
     });
   }
 });

@@ -51,7 +51,7 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  z-index: 1;
+  z-index: 10;
 }
 
 /* Показываем выпадающий блок при наведении */
@@ -65,10 +65,21 @@
   background-color: #D8D4D4;
   cursor: pointer;
   padding: 10px 10px;
+  opacity: 1;
 }
-
 .dropdown-item-button:hover {
-  background-color: #EEEEEE;
+  background: linear-gradient(#ececeb, #eaeaea);
+  box-shadow:
+    inset rgba(0, 0, 0, .5) 0 -1px 1px,
+    inset rgba(0, 0, 0, .2) 0 1px,
+    rgba(0, 0, 0, .2) 0 1px 1px;
+}
+.dropdown-item-button:active {
+  background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .1));
+  box-shadow:
+    inset rgba(0, 0, 0, .8) 0 1px 2px,
+    inset rgba(0, 0, 0, .05) 0 -1px 0,
+    #fff 0 1px 1px;
 }
 
 .dropdown-container {

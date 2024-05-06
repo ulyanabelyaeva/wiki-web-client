@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import Markdown from "./Markdown";
-import { switchEditMode, fetchPageContent } from "../redux/slice/PageWindowSlice";
+import { switchEditMode, fetchPageContent, fetchPage } from "../redux/slice/PageWindowSlice";
 import { fetchUpdatingPage } from "../redux/slice/TreeSlice";
 import '../style/PageWindow.css';
 
@@ -33,6 +33,11 @@ function PageWindowComponent() {
         };
         await dispatch(fetchUpdatingPage(request));
         dispatch(fetchPageContent(page.fileUUID))
+        dispatch(fetchPage(page.id))
+    }
+
+    const downloadPDF = () => {
+
     }
 
     if (page === null) {
@@ -51,7 +56,10 @@ function PageWindowComponent() {
                         <div className="page-window-subtitle">Создано: {createdAt}</div>
                         <div className="page-window-subtitle">Обновлено: {updatedAt}</div>
                     </div>
-                    {editMode ? <div></div> : <button onClick={switchModeToEdit} className="page-window-btn">Редактировать</button>}
+                    <div className="page-window-header-right">
+                        {editMode ? <div></div> : <button onClick={downloadPDF} className="page-window-print-btn"/>}
+                        {editMode ? <div></div> : <button onClick={switchModeToEdit} className="page-window-btn">Редактировать</button>}
+                    </div>
                 </div>
                 <Markdown />
                 <div className="page-window-footer">
