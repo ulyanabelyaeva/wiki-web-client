@@ -23,3 +23,6 @@ To install libraries, use the command `npm install --save <library-name>`
 
 - Shift+Alt+F - выравнивание кода 
 - Ctrl+` - открытие терминала
+
+## Документации
+https://jpuri.github.io/react-draft-wysiwyg/#/docs?_k=jjqinp - для Mardown компонента

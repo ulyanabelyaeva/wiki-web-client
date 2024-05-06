@@ -5,17 +5,47 @@
 }
 
 .node {
-  margin: 10px 0;
   padding-left: 20px;
 }
 
 .node-content {
+  padding: 5px;
   display: flex;
   justify-content: space-between;
   font-size: 15px;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
-.toggle-icon {
+.page-node-content {
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.page-btn {
+  border: none;
+  cursor: pointer;
+  padding: 0px;
+  font-size: 15px;
+}
+
+.node-content:hover {
+  background-color: #d7d7d7;
+}
+
+.page-node-content:hover {
+  background-color: #d7d7d7;
+}
+
+.page-btn:hover {
+  background-color: #d7d7d7;
+}
+
+.page-node-content:hover .page-btn {
+  background-color: #d7d7d7;
+}
+
+.directory-icon {
   cursor: pointer;
   margin-right: 10px;
   width: 20px;
@@ -43,56 +73,43 @@
   border: none;
 }
 
-.dropdown {
-  margin: 0 10px;
-}
-
-/* Выпадающий контент (по умолчанию скрыт) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  z-index: 10;
-}
-
-/* Показываем выпадающий блок при наведении */
-.dropdown:hover .dropdown-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.dropdown-item-button {
-  border: 0px;
-  background-color: #D8D4D4;
-  cursor: pointer;
-  padding: 10px 10px;
-  opacity: 1;
-}
-.dropdown-item-button:hover {
-  background: linear-gradient(#ececeb, #eaeaea);
-  box-shadow:
-    inset rgba(0, 0, 0, .5) 0 -1px 1px,
-    inset rgba(0, 0, 0, .2) 0 1px,
-    rgba(0, 0, 0, .2) 0 1px 1px;
-}
-.dropdown-item-button:active {
-  background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .1));
-  box-shadow:
-    inset rgba(0, 0, 0, .8) 0 1px 2px,
-    inset rgba(0, 0, 0, .05) 0 -1px 0,
-    #fff 0 1px 1px;
-}
-
-.dropdown-container {
+.tree-header {
   display: flex;
   justify-content: end;
+  align-items: center;
   padding: 10px 0px;
 }
 
-.page-btn {
-  border: none;
+.tree-new-page-btn {
+  width: 20px;
+  height: 20px;
+  background-image: url('../../public/plus_file.svg');
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+  border: 0px;
+  margin-right: 10px;
   cursor: pointer;
-  padding: 0px;
-  font-size: 15px;
+}
+
+.tree-new-directory-btn {
+  width: 20px;
+  height: 20px;
+  background-image: url('../../public/plus_folder.svg');
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+  border: 0px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.tree-new-item-btns {
+  display: none;
+}
+
+.node-content:hover .tree-new-item-btns {
+  display: block;
 }
 
 .edit-name {

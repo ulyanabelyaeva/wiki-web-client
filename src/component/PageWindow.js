@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import Markdown from "./Markdown";
-import { switchEditMode, fetchPageContent, fetchPage } from "../redux/slice/PageWindowSlice";
+import { switchEditMode, fetchPageContent, fetchPage, updateContent } from "../redux/slice/PageWindowSlice";
 import { fetchUpdatingPage } from "../redux/slice/TreeSlice";
 import '../style/PageWindow.css';
 
@@ -17,11 +17,11 @@ function PageWindowComponent() {
         return formattedDate;
     }
 
-    const switchModeToEdit = () => {
+    const edit = () => {
         dispatch(switchEditMode(true));
     }
 
-    const switchModeToRead = async () => {
+    const save = async () => {
         dispatch(switchEditMode(false));
 
         let now = new Date();
@@ -34,6 +34,11 @@ function PageWindowComponent() {
         await dispatch(fetchUpdatingPage(request));
         dispatch(fetchPageContent(page.fileUUID))
         dispatch(fetchPage(page.id))
+    }
+
+    const cancel = async () => {
+        dispatch(switchEditMode(false));
+        dispatch(updateContent(null));
     }
 
     const downloadPDF = () => {
@@ -57,13 +62,14 @@ function PageWindowComponent() {
                         <div className="page-window-subtitle">Обновлено: {updatedAt}</div>
                     </div>
                     <div className="page-window-header-right">
-                        {editMode ? <div></div> : <button onClick={downloadPDF} className="page-window-print-btn"/>}
-                        {editMode ? <div></div> : <button onClick={switchModeToEdit} className="page-window-btn">Редактировать</button>}
+                        {editMode ? <div></div> : <button onClick={downloadPDF} className="page-window-print-btn" />}
+                        {editMode ? <div></div> : <button onClick={edit} className="page-window-btn">Редактировать</button>}
                     </div>
                 </div>
                 <Markdown />
                 <div className="page-window-footer">
-                    {editMode ? <button className="page-window-btn" onClick={switchModeToRead}>Сохранить</button> : <div></div>}
+                    {editMode ? <button className="page-window-btn && page-window-cancel-btn" onClick={cancel}>Отменить</button> : <div></div>}
+                    {editMode ? <button className="page-window-btn" onClick={save}>Сохранить</button> : <div></div>}
                 </div>
             </div>
         </div>;

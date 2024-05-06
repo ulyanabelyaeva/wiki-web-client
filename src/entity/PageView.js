@@ -6,9 +6,14 @@ import '../style/Tree.css';
 
 const PageNode = ({ page }) => {
   const content = useSelector(state => state.pageWindowReducer.content);
+  const editMode = useSelector(state => state.pageWindowReducer.editMode)
 
   const dispatch = useDispatch();
   const updatePageState = () => {
+    if (editMode === true){
+      alert("Включен режим редактирования контента. Нажимите Отменить или Сохранить")
+      return;
+    }
     dispatch(updatePage(page));
     dispatch(fetchPageContent(page.fileUUID))
   }
@@ -47,8 +52,10 @@ const PageNode = ({ page }) => {
 
   return (
     <div className="node">
-      <button className="page-icon" />
-      <button onClick={updatePageState} onDoubleClick={updatePageName} id={page.id} className='page-btn'>{page.name}</button>
+      <div className='page-node-content'>
+        <button className="page-icon" />
+        <button onClick={updatePageState} onDoubleClick={updatePageName} id={page.id} className='page-btn'>{page.name}</button>
+      </div>
     </div>
   );
 };

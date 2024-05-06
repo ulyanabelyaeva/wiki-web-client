@@ -33,14 +33,9 @@ function TreeComponent() {
     };
 
     return <div className="tree-container">
-        <div className="dropdown-container">
-            <div className="dropdown">
-                <button className="node-plus-button">+</button>
-                <div className="dropdown-content">
-                    <button onClick={createNewPage} className="dropdown-item-button">Добавить страницу</button>
-                    <button onClick={createNewDirectory} className="dropdown-item-button">Добавить раздел</button>
-                </div>
-            </div>
+        <div className="tree-header">
+            <button onClick={createNewPage} className="tree-new-page-btn" />
+            <button onClick={createNewDirectory} className="tree-new-directory-btn" />
         </div>
         <DirectoryView directories={tree?.directories} />
         <PageView pages={tree?.pages} />

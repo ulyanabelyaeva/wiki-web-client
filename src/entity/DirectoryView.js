@@ -65,15 +65,12 @@ const DirectoryNode = ({ directory }) => {
     <div className="node">
       <div className="node-content">
         <div>
-          <button onClick={toggleNode} className="toggle-icon" />
+          <button onClick={toggleNode} className="directory-icon" />
           <span onDoubleClick={updateDirectoryName} id={directory.id}>{directory.name}</span>
         </div>
-        <div className="dropdown">
-          <button className="node-plus-button">+</button>
-          <div className="dropdown-content">
-            <button onClick={createNewPage} className="dropdown-item-button">Добавить страницу</button>
-            <button onClick={createNewDirectory} className="dropdown-item-button">Добавить раздел</button>
-          </div>
+        <div className="tree-new-item-btns">
+          <button onClick={createNewPage} className="tree-new-page-btn"/>
+          <button onClick={createNewDirectory} className="tree-new-directory-btn"/>
         </div>
       </div>
       {isOpen && <DirectoryView directories={directory?.childDirectories} />}

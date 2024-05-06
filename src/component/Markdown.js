@@ -34,8 +34,14 @@ function Markdown() {
         if (!editMode && toolbar[0].classList.contains('dispay-none') === false) {
             toolbar[0].classList.add('dispay-none');
         }
-        if (editMode &&toolbar[0].classList.contains('dispay-none') === true) {
+        if (editMode && toolbar[0].classList.contains('dispay-none') === true) {
             toolbar[0].classList.remove('dispay-none')
+        }
+
+        if (content !== null) {
+            const draftContent = htmlToDraft(content);
+            const contentState = ContentState.createFromBlockArray(draftContent.contentBlocks);
+            setEditorState(EditorState.createWithContent(contentState));
         }
     }, [editMode])
 
