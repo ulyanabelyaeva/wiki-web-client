@@ -52,9 +52,9 @@ const PageNode = ({ page }) => {
 
   return (
     <div className="node">
-      <div className='page-node-content'>
+      <div className='page-node-content' onClick={updatePageState}>
         <button className="page-icon" />
-        <button onClick={updatePageState} onDoubleClick={updatePageName} id={page.id} className='page-btn'>{page.name}</button>
+        <button onDoubleClick={updatePageName} id={page.id} className='page-btn'>{page.name}</button>
       </div>
     </div>
   );
