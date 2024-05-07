@@ -40,34 +40,25 @@
     padding: 15px 15px;
     border: none;
 }
+
 .page-window-btn:hover {
     background: linear-gradient(#ececeb, #eaeaea);
     box-shadow:
-     inset rgba(0,0,0,.5) 0 -1px 1px,
-     inset rgba(0,0,0,.2) 0 1px,
-     rgba(0,0,0,.2) 0 1px 1px;
-  }
-.page-window-btn:active {
-    background: linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.1));
-    box-shadow:
-     inset rgba(0,0,0,.8) 0 1px 2px,
-     inset rgba(0,0,0,.05) 0 -1px 0,
-     #fff 0 1px 1px;
-  }
-  .page-window-cancel-btn{
-    margin-right: 20px;
-  }
+        inset rgba(0, 0, 0, .5) 0 -1px 1px,
+        inset rgba(0, 0, 0, .2) 0 1px,
+        rgba(0, 0, 0, .2) 0 1px 1px;
+}
 
-.page-window-print-btn {
-    cursor: pointer;
+.page-window-btn:active {
+    background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .1));
+    box-shadow:
+        inset rgba(0, 0, 0, .8) 0 1px 2px,
+        inset rgba(0, 0, 0, .05) 0 -1px 0,
+        #fff 0 1px 1px;
+}
+
+.margin-right {
     margin-right: 20px;
-    width: 30px;
-    height: 30px;
-    background-image: url('../../public/print.svg');
-    background-color: transparent;
-    background-size: cover;
-    background-position: center;
-    border: 0px;
 }
 
 .page-window-footer {

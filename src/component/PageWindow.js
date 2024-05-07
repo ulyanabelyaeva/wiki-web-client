@@ -41,8 +41,17 @@ function PageWindowComponent() {
         dispatch(updateContent(null));
     }
 
-    const downloadPDF = () => {
-
+    const downloadPDF = async () => {
+        let path = "http://localhost:8091/page/create-pdf/" + page.fileUUID;
+        const response = await fetch(path);
+        const blob = await response.blob();
+        const downloadUrl = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = page.fileUUID;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
     }
 
     if (page === null) {
@@ -62,13 +71,13 @@ function PageWindowComponent() {
                         <div className="page-window-subtitle">Обновлено: {updatedAt}</div>
                     </div>
                     <div className="page-window-header-right">
-                        {editMode ? <div></div> : <button onClick={downloadPDF} className="page-window-print-btn" />}
+                        {editMode ? <div></div> : <button onClick={downloadPDF} className="page-window-btn && margin-right">Печать</button>}
                         {editMode ? <div></div> : <button onClick={edit} className="page-window-btn">Редактировать</button>}
                     </div>
                 </div>
                 <Markdown />
                 <div className="page-window-footer">
-                    {editMode ? <button className="page-window-btn && page-window-cancel-btn" onClick={cancel}>Отменить</button> : <div></div>}
+                    {editMode ? <button className="page-window-btn && margin-right" onClick={cancel}>Отменить</button> : <div></div>}
                     {editMode ? <button className="page-window-btn" onClick={save}>Сохранить</button> : <div></div>}
                 </div>
             </div>
