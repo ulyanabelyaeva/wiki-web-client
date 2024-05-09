@@ -10,7 +10,6 @@ function App() {
   return (
     <div className='app'>
       <Routes>
-        {console.log(isAuth())}
         {isAuth() ? (<Route path='/' element={<Workspace />} />) : (<Route path='/login' element={<Login />} />)}
 
         <Route path='/login' element={<Login />} />

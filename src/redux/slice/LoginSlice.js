@@ -10,8 +10,11 @@ export const isAuth = () => {
 
 export const fetchLogin = async (user) => {
     const { data } = await instanse.post('/user/login', user);
-    console.log(data)
     if (data !== null && data !== undefined) {
         window.localStorage.setItem('token', data)
     }
+}
+
+export const fetchCreateUser = async (user) => {
+    await instanse.post('/user/create', user);
 }

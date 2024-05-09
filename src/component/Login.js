@@ -2,7 +2,9 @@ import React from "react";
 import { Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
-import { isAuth, fetchLogin } from '../redux/slice/LoginSlice'
+import { isAuth, fetchLogin, fetchCreateUser } from '../redux/slice/LoginSlice'
+
+import '../style/Login.css'
 
 
 function Login() {
@@ -13,23 +15,46 @@ function Login() {
     }
 
     const onSubmit = async (values) => {
-        let user = {
-            login: values.login,
-            password: values.password
-        };
-        await fetchLogin(user);
-        return <Navigate to="/" />
+        if (values.repass !== '') {
+            if (values.repass !== values.password) {
+                alert("Пароли не совпадают");
+                return;
+            } else {
+                let user = {
+                    login: values.login,
+                    password: values.password
+                };
+                await fetchCreateUser(user);
+            }
+        } else {
+            let user = {
+                login: values.login,
+                password: values.password
+            };
+            await fetchLogin(user);
+        }
     }
 
     return <div className="login-container">
         <form onSubmit={handleSubmit(onSubmit)}>
-            <div>Войти</div>
-            <input {...register('login', { required: 'Укажите логин' })} placeholder='Логин' />
-            <input {...register('password', { required: 'Укажите пароль' })} placeholder='Пароль' />
-            <div>
-                <button type="submit">Войти</button>
+            <input checked={true} id="signin" name="action" type="radio" value="signin" readOnly={true} />
+            <label for="signin">Войти</label>
+            <input id="signup" name="action" type="radio" value="signup" />
+            <label for="signup">Зарегестироваться</label>
+            <div id="wrapper">
+                <div id="arrow"></div>
+                <input {...register('login')} id="login" placeholder="Логин" type="text" />
+                <input {...register('password')} id="pass" placeholder="Пароль" type="password" />
+                <input {...register('repass')} id="repass" placeholder="Повторите пароль" type="password" />
             </div>
-            <div><a href='/registration'>Зарегестрироваться</a></div>
+            <button className="btn-submit" type="submit">
+                <span>
+                    <br />
+                    Готово
+                    <br />
+                    Готово
+                </span>
+            </button>
         </form>
     </div>
 }
