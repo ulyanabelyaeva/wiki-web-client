@@ -38,7 +38,7 @@ const DirectoryNode = ({ directory }) => {
     area.value = view.innerHTML;
 
     area.onkeydown = function (event) {
-      if (event.key == 'Enter') {
+      if (event.key === 'Enter') {
         this.blur();
       }
     };

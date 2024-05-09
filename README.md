@@ -1,11 +1,12 @@
 # wiki-web-client
 
-The project is a frontend part of the wiki web application, a system for managing a personal knowledge base.
+Проект является клиентской частью веб-приложения вики-системы для управления базой знаний.
 
-To start, use the command `npm start`
-
-To install libraries, use the command `npm install --save <library-name>`
-
+Команды:
+Для старта: `npm start`
+Для установки библиотеки: `npm install --save <library-name>`
+Для установки библиотеки с определенной версией: `npm install --save <library-name>@<version>`
+Для удаления библиотеки: `npm uninstall -g <library-name>`
 
 ## Используемые библиотеки
 
@@ -16,7 +17,7 @@ To install libraries, use the command `npm install --save <library-name>`
 - axios
 - @reduxjs/toolkit
 - redux react-redux
-
+- react-hook-form
 
 
 ## Горячие клавиши VSCode
