@@ -17,7 +17,8 @@ const DirectoryNode = ({ directory }) => {
       createdAt: now.toISOString()
     };
     await dispatch(fetchCreationDirectory(request));
-    dispatch(fetchTree())
+    dispatch(fetchTree());
+    setIsOpen(true);
   };
 
   const createNewPage = async () => {
@@ -28,7 +29,8 @@ const DirectoryNode = ({ directory }) => {
       createdAt: now.toISOString()
     };
     await dispatch(fetchCreationPage(request));
-    dispatch(fetchTree())
+    dispatch(fetchTree());
+    setIsOpen(true);
   };
 
   const updateDirectoryName = () => {
