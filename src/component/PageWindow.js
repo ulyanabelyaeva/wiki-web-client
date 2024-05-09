@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import Markdown from "./Markdown";
-import { switchEditMode, fetchPageContent, fetchPage, updateContent } from "../redux/slice/PageWindowSlice";
+import { switchEditMode, fetchPageContent, fetchPage, updateContent, fetchPdf } from "../redux/slice/PageWindowSlice";
 import { fetchUpdatingPage } from "../redux/slice/TreeSlice";
 import '../style/PageWindow.css';
 
@@ -42,8 +42,12 @@ function PageWindowComponent() {
     }
 
     const downloadPDF = async () => {
-        let path = "http://localhost:8091/page/create-pdf/" + page.fileUUID;
-        const response = await fetch(path);
+        let path = 'http://localhost:8091/page/create-pdf/' + page.fileUUID;
+        const response = await fetch(path, {
+            headers: {
+                'Authorization': window.localStorage.getItem('token'),
+            }
+        });
         const blob = await response.blob();
         const downloadUrl = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
