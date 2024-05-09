@@ -1,14 +1,16 @@
 import React from "react";
 import { Navigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from "react-router-dom";
 
-import { isAuth, fetchLogin, fetchCreateUser } from '../redux/slice/LoginSlice'
+import { isAuth, fetchLogin, fetchCreateUser } from '../redux/slice/AuthSlice'
 
-import '../style/Login.css'
+import '../style/Auth.css'
 
 
-function Login() {
+function Auth() {
     const { register, handleSubmit } = useForm();
+    const navigate = useNavigate();
 
     if (isAuth()) {
         return <Navigate to="/" />
@@ -25,6 +27,7 @@ function Login() {
                     password: values.password
                 };
                 await fetchCreateUser(user);
+                return navigate("/");
             }
         } else {
             let user = {
@@ -32,6 +35,7 @@ function Login() {
                 password: values.password
             };
             await fetchLogin(user);
+            return navigate("/");
         }
     }
 
@@ -59,4 +63,4 @@ function Login() {
     </div>
 }
 
-export default Login;
+export default Auth;
