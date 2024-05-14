@@ -53,7 +53,7 @@ const PageNode = ({ page }) => {
   return (
     <div className="node">
       <div className='page-node-content' onClick={updatePageState}>
-        <button className="page-icon" />
+        <div className="page-icon"/>
         <button onDoubleClick={updatePageName} id={page.id} className='page-btn'>{page.name}</button>
       </div>
     </div>

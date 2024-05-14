@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import DirectoryView from "../entity/DirectoryView";
 import PageView from "../entity/PageView";
 import { fetchCreationDirectory, fetchCreationPage, fetchTree } from "../redux/slice/TreeSlice";
@@ -7,6 +8,7 @@ import '../style/Tree.css';
 
 function TreeComponent() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const tree = useSelector(state => state.treeReducer.tree);
     useEffect(() => {
         dispatch(fetchTree())
@@ -32,10 +34,21 @@ function TreeComponent() {
         dispatch(fetchTree())
     };
 
+    const logout = async () => {
+        await window.localStorage.removeItem('token');
+        return navigate("/login");
+    };
+
     return <div className="tree-container">
         <div className="tree-header">
-            <button onClick={createNewPage} className="tree-new-page-btn" />
-            <button onClick={createNewDirectory} className="tree-new-directory-btn" />
+            <div className="dropdown">
+                <button className="dropdown-menu-btn"/>
+                <div className="dropdown-content">
+                    <button onClick={createNewPage} className="dropdown-item-btn">Добавить страницу</button>
+                    <button onClick={createNewDirectory} className="dropdown-item-btn">Добавить раздел</button>
+                    <button onClick={logout} className="dropdown-item-btn">Выйти</button>
+                </div>
+            </div>
         </div>
         <DirectoryView directories={tree?.directories} />
         <PageView pages={tree?.pages} />

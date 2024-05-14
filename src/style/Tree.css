@@ -12,14 +12,22 @@
   padding: 5px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: 15px;
   cursor: pointer;
   border-radius: 10px;
 }
 
+.directory-node-content {
+  display: flex;
+  align-items: center;
+}
+
 .page-node-content {
   padding: 5px;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .page-btn {
@@ -62,10 +70,6 @@
   margin-right: 10px;
   width: 20px;
   height: 20px;
-  background-image: url('../../public/file.svg');
-  background-color: transparent;
-  background-size: cover;
-  background-position: center;
   border: 0px;
 }
 
@@ -76,39 +80,62 @@
 .tree-header {
   display: flex;
   justify-content: end;
+  padding: 10px 0px;
+}
+
+.dropdown {
+  margin: 0 10px;
+}
+
+.dropdown-menu-btn {
+  width: 20px;
+  height: 20px;
+  background-image: url('../../public/menu.svg');
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+  border: 0px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+/* Выпадающий контент (по умолчанию скрыт) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 10;
+}
+
+/* Показываем выпадающий блок при наведении */
+.dropdown:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
   align-items: center;
   padding: 10px 0px;
 }
 
-.tree-new-page-btn {
-  width: 20px;
-  height: 20px;
-  background-image: url('../../public/plus_file.svg');
-  background-color: transparent;
-  background-size: cover;
-  background-position: center;
+.dropdown-item-btn {
   border: 0px;
-  margin-right: 10px;
+  background-color: #D8D4D4;
   cursor: pointer;
+  padding: 10px 10px;
+  opacity: 1;
+  width: 100%;
+  text-align: start;
 }
 
-.tree-new-directory-btn {
-  width: 20px;
-  height: 20px;
-  background-image: url('../../public/plus_folder.svg');
-  background-color: transparent;
-  background-size: cover;
-  background-position: center;
-  border: 0px;
-  margin-right: 10px;
-  cursor: pointer;
+.dropdown-item-btn:hover {
+  background-color: #797979;
+  color: rgb(240, 240, 240);
 }
 
-.tree-new-item-btns {
+.directory-view-dropdown {
   display: none;
+  margin: 0 5px;
 }
 
-.node-content:hover .tree-new-item-btns {
+.node-content:hover .directory-view-dropdown {
   display: block;
 }
 
