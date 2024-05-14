@@ -67,7 +67,8 @@ const DirectoryNode = ({ directory }) => {
     <div className="node">
       <div className="node-content">
         <div className="directory-node-content">
-          <button onClick={toggleNode} className="directory-icon" />
+          {isOpen ? <button onClick={toggleNode} className="directory-icon && down-icon" /> :
+            <button onClick={toggleNode} className="directory-icon && right-icon" />}
           <span onDoubleClick={updateDirectoryName} id={directory.id}>{directory.name}</span>
         </div>
         <div className="dropdown && directory-view-dropdown">
