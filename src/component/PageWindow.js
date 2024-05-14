@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import Markdown from "./Markdown";
-import { switchEditMode, fetchPageContent, fetchPage, updateContent, fetchPdf } from "../redux/slice/PageWindowSlice";
+import Tag from "./TagZone";
+import { switchEditMode, fetchPageInfo, fetchPage, updateContent } from "../redux/slice/PageWindowSlice";
 import { fetchUpdatingPage } from "../redux/slice/TreeSlice";
 import '../style/PageWindow.css';
 
@@ -32,7 +33,7 @@ function PageWindowComponent() {
             updatedAt: now.toISOString()
         };
         await dispatch(fetchUpdatingPage(request));
-        dispatch(fetchPageContent(page.fileUUID))
+        dispatch(fetchPageInfo(page.fileUUID))
         dispatch(fetchPage(page.id))
     }
 
@@ -79,6 +80,7 @@ function PageWindowComponent() {
                         {editMode ? <div></div> : <button onClick={edit} className="page-window-btn">Редактировать</button>}
                     </div>
                 </div>
+                <Tag/>
                 <Markdown />
                 <div className="page-window-footer">
                     {editMode ? <button className="page-window-btn && margin-right" onClick={cancel}>Отменить</button> : <div></div>}

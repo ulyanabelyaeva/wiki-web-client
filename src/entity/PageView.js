@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { updatePage, fetchPageContent, fetchPage } from '../redux/slice/PageWindowSlice'
+import { updatePage, fetchPageInfo, fetchPage } from '../redux/slice/PageWindowSlice'
 import { fetchUpdatingPage, fetchTree } from '../redux/slice/TreeSlice';
 
 import '../style/Tree.css';
@@ -15,7 +15,7 @@ const PageNode = ({ page }) => {
       return;
     }
     dispatch(updatePage(page));
-    dispatch(fetchPageContent(page.fileUUID))
+    dispatch(fetchPageInfo(page.fileUUID))
   }
 
   const updatePageName = async () => {
