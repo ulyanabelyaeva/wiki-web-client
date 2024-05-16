@@ -39,6 +39,13 @@ const pageWindowSlice = createSlice({
     },
     updateContent(state, action) {
       state.updatedContent = action.payload
+    },
+    clearPageState(state) {
+      state.page = null
+      state.content = null
+      state.tags = []
+      state.updatedContent = null
+      state.editMode = false
     }
   },
   extraReducers: builder => {
@@ -59,4 +66,4 @@ const pageWindowSlice = createSlice({
 
 export const pageWindowReducer = pageWindowSlice.reducer;
 
-export const { updatePage, switchEditMode, updateContent } = pageWindowSlice.actions;
+export const { updatePage, switchEditMode, updateContent, clearPageState } = pageWindowSlice.actions;

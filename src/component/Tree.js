@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import DirectoryView from "../entity/DirectoryView";
 import PageView from "../entity/PageView";
-import { fetchCreationDirectory, fetchCreationPage, fetchTree } from "../redux/slice/TreeSlice";
+import { fetchCreationDirectory, fetchCreationPage, fetchTree, clearTreeState } from "../redux/slice/TreeSlice";
+import { clearPageState } from "../redux/slice/PageWindowSlice";
 import '../style/Tree.css';
 
 function TreeComponent() {
@@ -36,6 +37,8 @@ function TreeComponent() {
 
     const logout = async () => {
         await window.localStorage.removeItem('token');
+        dispatch(clearPageState());
+        dispatch(clearTreeState());
         return navigate("/login");
     };
 

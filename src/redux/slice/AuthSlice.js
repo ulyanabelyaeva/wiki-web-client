@@ -20,5 +20,10 @@ export const fetchLogin = async (user) => {
 }
 
 export const fetchCreateUser = async (user) => {
-    await instanse.post('/user/create', user);
+    try{
+        await instanse.post('/user/create', user);
+    } catch {
+        alert('user alreadry exists');
+        return;
+    }
 }

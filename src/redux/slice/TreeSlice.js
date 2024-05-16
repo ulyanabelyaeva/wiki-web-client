@@ -1,5 +1,6 @@
 import instanse from '../../axios'
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { clear } from './PageWindowSlice';
 
 const initialState = {
   tree: null,
@@ -30,6 +31,12 @@ export const fetchUpdatingDirectory = createAsyncThunk('fetchUpdatingDirectory',
 const TreeSlice = createSlice({
   name: "tree",
   initialState,
+  reducers: {
+    clearTreeState(state) {
+      state.tree = null;
+      state.status = 'loading'
+    }
+  },
   extraReducers: builder => {
     builder.addCase(fetchTree.pending, (state) => {
       state.status = 'loading';
@@ -46,3 +53,5 @@ const TreeSlice = createSlice({
 });
 
 export const treeReducer = TreeSlice.reducer;
+
+export const { clearTreeState } = TreeSlice.actions;
