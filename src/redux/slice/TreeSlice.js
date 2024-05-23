@@ -4,7 +4,8 @@ import { clear } from './PageWindowSlice';
 
 const initialState = {
   tree: null,
-  status: 'loading'
+  status: 'loading',
+  openTreeMobile: false
 };
 
 export const fetchTree = createAsyncThunk('fetchTree', async () => {
@@ -35,6 +36,9 @@ const TreeSlice = createSlice({
     clearTreeState(state) {
       state.tree = null;
       state.status = 'loading'
+    },
+    swithOpenTreeMobile(state) {
+      state.openTreeMobile = !state.openTreeMobile;
     }
   },
   extraReducers: builder => {
@@ -54,4 +58,4 @@ const TreeSlice = createSlice({
 
 export const treeReducer = TreeSlice.reducer;
 
-export const { clearTreeState } = TreeSlice.actions;
+export const { clearTreeState, swithOpenTreeMobile } = TreeSlice.actions;

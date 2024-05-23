@@ -3,3 +3,35 @@
     height: 100%;
     width: 100%;
 }
+
+.open-tree-btn-container{
+    display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .workspace {
+        flex-direction: column;
+    }
+    .open-tree-btn-container{
+        display: block;
+        background-size: cover;
+        background-color: #EEEEEE;
+        text-align: center;
+    }
+    .open-tree-btn{
+        width: 20px;
+        height: 20px;
+        background-image: url('../../public/down-icon.svg');
+        background-color: transparent;
+        background-size: cover;
+        background-position: center;
+        border: 0px;
+        margin-right: 10px;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+
+    .btn-top-direction{
+        background-image: url('../../public/top-icon.svg');
+    }
+}

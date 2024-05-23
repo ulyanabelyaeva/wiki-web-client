@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import { updatePage, fetchPageInfo, fetchPage } from '../redux/slice/PageWindowSlice'
 import { fetchUpdatingPage, fetchTree } from '../redux/slice/TreeSlice';
+import { swithOpenTreeMobile } from "../redux/slice/TreeSlice";
 
 import '../style/Tree.css';
 
 const PageNode = ({ page }) => {
+  const navigate = useNavigate();
   const content = useSelector(state => state.pageWindowReducer.content);
   const editMode = useSelector(state => state.pageWindowReducer.editMode)
 
@@ -14,8 +17,11 @@ const PageNode = ({ page }) => {
       alert("Включен режим редактирования контента. Нажимите Отменить или Сохранить")
       return;
     }
+    dispatch(swithOpenTreeMobile())
     dispatch(updatePage(page));
     dispatch(fetchPageInfo(page.fileUUID))
+    let path = "/page/" + page.id;
+    return navigate(path);
   }
 
   const updatePageName = async () => {

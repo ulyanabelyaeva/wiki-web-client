@@ -71,7 +71,7 @@ function PageWindowComponent() {
             <div className="page-window-container">
                 <div className="page-window-title">{page.name}</div>
                 <div className="page-window-header">
-                    <div>
+                    <div className="subtitle-container">
                         <div className="page-window-subtitle">Создано: {createdAt}</div>
                         <div className="page-window-subtitle">Обновлено: {updatedAt}</div>
                     </div>

@@ -27,7 +27,7 @@
 }
 
 .page-window-subtitle {
-    font-size: 15px;
+    font-size: 13px;
     color: #797979;
 }
 
@@ -53,4 +53,31 @@
 
 .page-window-footer {
     text-align: end;
+}
+
+@media screen and (max-width: 700px) {
+    .page-window {
+        width: 100%;
+    }
+
+    .page-window-title {
+        font-size: 20px;
+    }
+
+    .page-window-header {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-self: start;
+    }
+
+    .subtitle-container {
+        margin: 10px 0px;
+    }
+
+    .page-window-btn {
+        border-radius: 10px;
+        padding: 10px 10px;
+        border: none;
+    }
 }

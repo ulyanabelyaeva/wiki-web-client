@@ -64,11 +64,11 @@
   border: 0px;
 }
 
-.down-icon{
+.down-icon {
   background-image: url('../../public/down-icon.svg');
 }
 
-.right-icon{
+.right-icon {
   background-image: url('../../public/right-icon.svg');
 }
 
@@ -111,6 +111,7 @@
   display: none;
   position: absolute;
   z-index: 10;
+  left: 200px;
 }
 
 /* Показываем выпадающий блок при наведении */
@@ -153,4 +154,17 @@
   border: none;
   border-radius: 10px;
   font-size: 15px;
+}
+
+@media screen and (max-width: 700px) {
+  .tree-container {
+    display: none;
+  }
+  .open-tree-container{
+    display: block;
+    width: 100%;
+    top: 22px;
+    position: absolute;
+    z-index: 11;
+  }
 }

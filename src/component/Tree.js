@@ -45,7 +45,7 @@ function TreeComponent() {
     return <div className="tree-container">
         <div className="tree-header">
             <div className="dropdown">
-                <button className="dropdown-menu-btn"/>
+                <button className="dropdown-menu-btn" />
                 <div className="dropdown-content">
                     <button onClick={createNewPage} className="dropdown-item-btn">Добавить страницу</button>
                     <button onClick={createNewDirectory} className="dropdown-item-btn">Добавить раздел</button>

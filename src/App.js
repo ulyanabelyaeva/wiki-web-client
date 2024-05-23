@@ -11,6 +11,7 @@ function App() {
       <Routes>
         <Route path='/login' element={<Auth />} />
         <Route path='/' element={<Workspace/>}/>
+        <Route path='/page/:id' element={<Workspace/>}/>
       </Routes>
     </div>
   );
