@@ -16,6 +16,9 @@ function Workspace() {
     useEffect(() => { 
         const treeContainer = document.getElementsByClassName('tree-container');
         const openTreeBtn = document.getElementsByClassName('open-tree-btn');
+        if (treeContainer === null || treeContainer === undefined || openTreeBtn === null || openTreeBtn === undefined){
+            return;
+        }
         if (openTree) {
             treeContainer[0].classList.remove('open-tree-container');
             openTreeBtn[0].classList.remove('btn-top-direction')

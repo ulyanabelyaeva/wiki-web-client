@@ -111,7 +111,6 @@
   display: none;
   position: absolute;
   z-index: 10;
-  left: 200px;
 }
 
 /* Показываем выпадающий блок при наведении */
@@ -160,11 +159,16 @@
   .tree-container {
     display: none;
   }
-  .open-tree-container{
+
+  .open-tree-container {
     display: block;
     width: 100%;
     top: 22px;
     position: absolute;
     z-index: 11;
+  }
+
+  .dropdown-content {
+    left: 200px;
   }
 }
