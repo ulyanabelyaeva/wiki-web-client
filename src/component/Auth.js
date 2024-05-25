@@ -44,7 +44,7 @@ function Auth() {
             <input checked={true} id="signin" name="action" type="radio" value="signin" readOnly={true} />
             <label for="signin">Войти</label>
             <input id="signup" name="action" type="radio" value="signup" />
-            <label for="signup">Зарегестироваться</label>
+            <label for="signup">Зарегистироваться</label>
             <div id="wrapper">
                 <div id="arrow"></div>
                 <input {...register('login')} id="login" placeholder="Логин" type="text" />
