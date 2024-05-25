@@ -16,7 +16,7 @@ function Workspace() {
     useEffect(() => { 
         const treeContainer = document.getElementsByClassName('tree-container');
         const openTreeBtn = document.getElementsByClassName('open-tree-btn');
-        if (treeContainer === null || treeContainer === undefined || openTreeBtn === null || openTreeBtn === undefined){
+        if (treeContainer[0] === null || treeContainer[0] === undefined || openTreeBtn === null || openTreeBtn === undefined){
             return;
         }
         if (openTree) {
