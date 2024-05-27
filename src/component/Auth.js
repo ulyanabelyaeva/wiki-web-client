@@ -47,7 +47,7 @@ function Auth() {
             <label for="signup">Зарегистироваться</label>
             <div id="wrapper">
                 <div id="arrow"></div>
-                <input {...register('login')} id="login" placeholder="Логин" type="text" />
+                <input {...register('login')} id="login" placeholder="Логин" type="text" autocomplete="off" />
                 <input {...register('password')} id="pass" placeholder="Пароль" type="password" />
                 <input {...register('repass')} id="repass" placeholder="Повторите пароль" type="password" />
             </div>
